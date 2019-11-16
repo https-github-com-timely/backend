@@ -1,13 +1,32 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+// var uniqueValidator = require("mongoose-unique-validator");
 
-const eventSchema = new Schema({
+const EventSchema = Schema({
   title: {
-    type: String
+    type: String,
+    required: true,
+    minlength: 3
   },
   time: {
-    type: Date
-  }
+    type: Date,
+    required: true
+  },
+  creator_id: {
+    type: String,
+    required: true
+  },
+  category: {
+    type: String
+  },
+  description: {
+    type: String
+  },
+  guest_ids: [
+    {
+      type: String
+    }
+  ]
 });
 
-mongoose.model("events", eventSchema);
+mongoose.model("events", EventSchema);
