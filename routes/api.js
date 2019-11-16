@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const Hangout = require("../models/Events");
+const moment = require('moment');
+
+// const TODAY = momentmoment().startOf('day');
 
 router.get("/", function(req, res, next) {
   res.send({
@@ -54,7 +57,7 @@ router.post("/join", (req, resp) => {
 
 router.get("/all", (req, resp) => {
   const { category } = req.params;
-  Hangout.find({ category }, (err, events) => {
+  Hangout.find({ category, time: { $gte: moment() } }, (err, events) => {
     if (err) throw new Error(err);
     resp.send(events);
   });
