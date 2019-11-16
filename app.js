@@ -9,6 +9,9 @@ const app = express();
 const bodyParser = require("body-parser");
 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true });
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
 
 app.use(express.json());
 app.use(bodyParser.json())
