@@ -17,6 +17,9 @@ app.use(express.json());
 app.use(bodyParser.json())
 require("./models/Events");
 require("./models/Users");
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
 
 const User = mongoose.model("users");
 
