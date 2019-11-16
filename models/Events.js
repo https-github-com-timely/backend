@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-// var uniqueValidator = require("mongoose-unique-validator");
 
 const EventSchema = Schema({
   title: {
@@ -11,6 +10,16 @@ const EventSchema = Schema({
   time: {
     type: Date,
     required: true
+  },
+  location: {
+    lat_long: {
+      type: String
+    },
+    coordinates: [
+      {
+        type: Number
+      }
+    ]
   },
   creator_id: {
     type: String,

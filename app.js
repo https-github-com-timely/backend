@@ -2,7 +2,6 @@ require("dotenv").config();
 
 const express = require("express");
 const apiRoutes = require("./routes/api");
-const moment = require("moment");
 
 const app = express();
 app.use(express.json());
