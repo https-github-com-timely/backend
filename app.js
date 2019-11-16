@@ -1,5 +1,8 @@
 require("dotenv").config();
 
+require("./models/Events");
+require("./models/Users");
+
 const express = require("express");
 const indexRouter = require("./routes/index");
 const apiRouter = require("./routes/api");
@@ -15,11 +18,6 @@ mongoose.set('useCreateIndex', true);
 
 app.use(express.json());
 app.use(bodyParser.json())
-require("./models/Events");
-require("./models/Users");
-mongoose.set('useNewUrlParser', true);
-mongoose.set('useFindAndModify', false);
-mongoose.set('useCreateIndex', true);
 
 const User = mongoose.model("users");
 
