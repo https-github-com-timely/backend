@@ -1,0 +1,2 @@
+// create .env file, get uri from mongodb online account (creds found in doc)
+MONGO_URI=
