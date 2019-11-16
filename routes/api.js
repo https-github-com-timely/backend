@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Hangout = require("../models/Events");
+const User = require("../models/Users");
 
 router.get("/", function(req, res, next) {
   res.send({
@@ -63,6 +64,14 @@ router.get("/my_events", (req, resp) => {
   Hangout.find({ creator_id: user_id }, (err, events) => {
     if (err) throw new Error(err);
     resp.send(events);
+  });
+});
+
+router.get("/check_user", (req, resp) => {
+  const { email } = req.body;
+  User.find({ email }, (err, account) => {
+    if (err) throw new Error(err);
+    resp.send(account);
   });
 });
 
