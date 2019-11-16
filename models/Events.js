@@ -15,6 +15,16 @@ const EventSchema = Schema({
     type: Date,
     required: true
   },
+  location: {
+    lat_long: {
+      type: String
+    },
+    coordinates: [
+      {
+        type: Number
+      }
+    ]
+  },
   creator_id: {
     type: String,
     required: true
