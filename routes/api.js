@@ -36,6 +36,22 @@ router.post("/create_event", (req, res) => {
   })
 })
 
+router.post("/join", (req, resp) => {
+  const { user_id, event_id } = req.body;
+  Hangout.findOneAndUpdate(
+    { event_id: event_id },
+    { 
+      $push: { 
+        guest_ids: user_id 
+      } 
+    },
+    (err, success) => {
+      if (err) throw new Error(err)
+      resp.sendStatus(200);
+    }
+  )
+})
+
 router.get("/all", (req, resp) => {
   const { category } = req.params;
   Hangout.find({ category }, (err, events) => {
