@@ -7,6 +7,10 @@ const UserSchema = Schema({
     type: String,
     required: true
   },
+  profile_pic: {
+    type: String,
+    required: true
+  },
   first_name: {
     type: String,
     required: true

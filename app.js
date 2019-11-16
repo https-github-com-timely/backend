@@ -17,7 +17,6 @@ app.use(bodyParser.json());
 
 app.use("/", indexRouter);
 app.use("/api", apiRouter);
-// app.use("/users", usersRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
