@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-// var uniqueValidator = require("mongoose-unique-validator");
 
 const EventSchema = Schema({
   title: {
@@ -29,4 +28,4 @@ const EventSchema = Schema({
   ]
 });
 
-export default mongoose.model("events", EventSchema);
+module.exports = mongoose.model("events", EventSchema);
