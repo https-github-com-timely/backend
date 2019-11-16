@@ -43,8 +43,7 @@ router.post("/create_event", (req, res) => {
 });
 
 router.get("/all", (req, resp) => {
-  const { category } = req.params;
-  console.log(category);
+  const { category } = req.body;
   Hangout.find({ category }, (err, events) => {
     if (err) throw new Error(err);
     resp.send(events);
@@ -52,8 +51,16 @@ router.get("/all", (req, resp) => {
 });
 
 router.get("/going", (req, resp) => {
-  const { user_id } = req.params;
+  const { user_id } = req.body;
   Hangout.find({ guest_ids: { $in: [user_id] } }, (err, events) => {
+    if (err) throw new Error(err);
+    resp.send(events);
+  });
+});
+
+router.get("/my_events", (req, resp) => {
+  const { user_id } = req.body;
+  Hangout.find({ creator_id: user_id }, (err, events) => {
     if (err) throw new Error(err);
     resp.send(events);
   });
