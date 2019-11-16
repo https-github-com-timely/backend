@@ -34,4 +34,12 @@ router.post('/create_event', (req, res) => {
   })
 })
 
+router.get('/all', (req, resp) => {
+  const { category } = req.params;
+  Hangout.find({ category }, (err, events) => {
+    if (err) throw new Error(err);
+    resp.send(events);
+  });
+})
+
 module.exports = router;
