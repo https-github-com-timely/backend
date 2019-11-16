@@ -94,4 +94,14 @@ router.get("/check_user", (req, resp) => {
   });
 });
 
+router.post("/update_user_description", async (req, resp) => {
+  const { email, description } = req.body;
+  let user = await User.updateOne(
+    { email },
+    { $set: { description } },
+    { new: true }
+  );
+  resp.sendStatus(200);
+});
+
 module.exports = router;
