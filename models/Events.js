@@ -33,7 +33,10 @@ const EventSchema = Schema({
     {
       type: String
     }
-  ]
+  ],
+  hidden: {
+    type: Boolean
+  }
 });
 
 module.exports = mongoose.model("events", EventSchema);
