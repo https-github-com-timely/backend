@@ -11,7 +11,7 @@ router.get("/", function(req, res, next) {
   });
 });
 
-router.post('/create_event', (req, res) => {
+router.post("/create_event", (req, res) => {
   const {
     title,
     time,
@@ -19,7 +19,8 @@ router.post('/create_event', (req, res) => {
     description,
     creator_name,
     creator_id,
-  } = body;
+    guest_ids,
+  } = req.body;
   const hangout = new Hangout({
     title,
     time,
@@ -27,6 +28,7 @@ router.post('/create_event', (req, res) => {
     description,
     creator_name,
     creator_id,
+    guest_ids
   });
   hangout.save((err) => {
     if (err) throw new Error(err);
@@ -34,12 +36,20 @@ router.post('/create_event', (req, res) => {
   })
 })
 
-router.get('/all', (req, resp) => {
+router.get("/all", (req, resp) => {
   const { category } = req.params;
   Hangout.find({ category }, (err, events) => {
     if (err) throw new Error(err);
     resp.send(events);
   });
+})
+
+router.get("/going", (req, resp) => {
+  const { user_id } = req.params;
+  Hangout.find({ guest_ids: { $in: [user_id] } }, (err, events) => {
+    if (err) throw new Error(err);
+    resp.send(events);
+  })
 })
 
 module.exports = router;
