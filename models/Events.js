@@ -12,14 +12,12 @@ const EventSchema = Schema({
     required: true
   },
   location: {
-    lat_long: {
-      type: String
+    lat: {
+      type: Number
     },
-    coordinates: [
-      {
-        type: Number
-      }
-    ]
+    long: {
+      type: Number
+    }
   },
   creator_id: {
     type: String,
