@@ -4,6 +4,9 @@ const Schema = mongoose.Schema;
 const eventSchema = new Schema({
   title: {
     type: String
+  },
+  time: {
+    type: Date
   }
 });
 
