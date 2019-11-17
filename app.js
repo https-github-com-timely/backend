@@ -1,5 +1,4 @@
 require("dotenv").config();
-
 require("./models/Events");
 require("./models/Users");
 
