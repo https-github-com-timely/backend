@@ -17,25 +17,28 @@ const EventSchema = Schema({
   },
   location: {
     lat: {
-      type: Number
+      type: Number,
     },
     long: {
-      type: Number
+      type: Number,
     }
+  },
+  image_url: {
+    type: String,
   },
   creator_id: {
     type: String,
     required: true
   },
   category: {
-    type: String
+    type: String,
   },
   description: {
-    type: String
+    type: String,
   },
   guest_ids: [
     {
-      type: String
+      type: String,
     }
   ]
 });

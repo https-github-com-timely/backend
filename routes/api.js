@@ -14,7 +14,7 @@ router.get("/", function(req, res, next) {
 
 router.get("/all", (req, resp) => {
   const { category } = req.params;
-  Hangout.find({ category, time: { $gte: moment() } }, (err, events) => {
+  Hangout.find({ category, time: { $gte: (new Date()).getTime() / 1000 } }, (err, events) => {
     if (err) throw new Error(err);
     resp.send(events);
   });
@@ -40,7 +40,7 @@ router.post("/create_event", (req, res) => {
   } = req.body;
   const hangout = new Hangout({
     title,
-    time,
+    time: (new Date(time)).getTime() / 1000,
     loc,
     description,
     creator_name,
